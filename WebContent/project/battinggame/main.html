@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>バッティングゲーム</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/game.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+    <script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/Chart.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/game.js"></script>
+
+
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+
+  	<!-- 右のメニュー表示 -->
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="index.html#home">Batting Game</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="#game" class="smoothScroll">game</a>
+			<a href="#services" class="smoothScroll">Rules</a>
+			<a href="#contact" class="smoothScroll">Developer</a>
+			<a href="#"><i class="icon-facebook"></i></a>
+			<a href="#"><i class="icon-twitter"></i></a>
+			<a href="#"><i class="icon-dribbble"></i></a>
+			<a href="#"><i class="icon-envelope"></i></a>
+		</div>
+
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav>
+
+
+	<!-- ========== ゲームページ ========== -->
+
+ 	<section id="game" name="home"></section>
+
+    <!-- connecting中... or ゲーム開始 -->
+    <div>
+        <span id="connect"></span>
+        プレイヤー: <span id="headcount"></span>/6
+        ラウンド数: <span id="gameRound"></span>/15
+    </div>
+
+
+    <!-- 得点カードの値をjsで挿入 -->
+    <div class="score">
+    <div>
+    		得点カード: <span id="scoreCard"></span>
+    </div>
+       	</div>
+
+
+    <!-- 出したカードの値をjsで挿入 -->
+    <div>
+        出したカード: <span id="choiceCard"></span>
+    </div>
+
+    <!-- プレイヤーの名前を表示 -->
+    <div>
+        名前: <span id="name"></span>
+        部屋番号: <span id="room"></span>
+    </div>
+
+
+    <!-- セレクトボタンで出すカードを選択しsend_buttonで送信 -->
+    <div>
+        <select id="cardList">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+
+    		    <button id="send_button" class="btn btn-default white-yellow" >カードを出す</button>
+
+
+        <!-- 開始ボタン -->
+        <button id="start_button" onclick="disabled = true;">開始</button>
+
+
+	    </div>
+    <!-- プレイヤーごとの得点を表示 -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>プレイヤー名</th><th>出した数字</th><th>合計得点</th>
+      </tr>
+    </thead>
+    <tbody id="table">
+
+    </tbody>
+  </table>
+	<!--</div>
+	</div> -->
+
+    <!-- 勝者を表示 -->
+    <div>
+        勝者: <span id="winner"></span>
+    </div>
+
+
+    	<!-- ========== ルール説明ページ ========== -->
+	<section id="services" name="services"></section>
+	<div id="g">
+		<div class="container">
+			<div class="row">
+				<h3>Rules</h3>
+				<br>
+				<br>
+				<div class="col-lg-2">
+					<!--  <img src="assets/img/s4.png"> -->
+					<h4>ルール 1</h4>
+					<p>サーバーがカードを数字を１つ表示します。</p>
+				</div>
+				<div class="col-lg-3">
+					<!--  <img src="assets/img/s4.png"> -->
+					<h4>ルール 2</h4>
+					<p>各プレイヤーは親の数字と自分のチェックボックスの数字を良く見て、数字を１つ選んで「カードを出す」ボタンをクリックします。</p>
+				</div>
+				<div class="col-lg-2">
+					<!--  <img src="assets/img/s4.png"> -->
+					<h4>ルール 3</h4>
+					<p>全員が揃ったら、サーバーが結果を表示します。</p>
+				</div>
+				<div class="col-lg-2">
+					<!--  <img src="assets/img/s4.png"> -->
+
+					<h4>ルール 4</h4>
+					<p>勝者は得点を獲得し、次のゲームに移ります。</p>
+				</div>
+
+				<div class="col-lg-3">
+					<!--  <img src="assets/img/s4.png"> -->
+					<h4>ルール 5</h4>
+					<p>ルール１〜４を15回繰り返し、得点が一番多い人が勝者です。</p>
+				</div>
+
+			</div>
+		</div><!-- /container -->
+	</div><!-- /g -->
+
+
+	<!-- ========== 開発者名前一覧 ========== -->
+	<section id="contact" name="contact"></section>
+	<div id="f">
+		<div class="container">
+			<div class="row">
+					<h3><b>Developers</b></h3>
+					<br>
+					<div class="col-lg-3">
+						<h3><b>1510370049</b></h3>
+						<h3> Ozaki Yuma</h3>
+						<br>
+					</div>
+
+					<div class="col-lg-3">
+						<h3><b>1510370050</b></h3>
+						<h3> Kuroda Takuya</h3>
+						<br>
+					</div>
+
+					<div class="col-lg-3">
+						<h3><b>1510370051</b></h3>
+						<h3> Iwata Ren</h3>
+						<br>
+					</div>
+					<div class="col-lg-3">
+						<h3><b>1510370054</b></h3>
+						<h3> Inoue Shota</h3>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div><!-- /container -->
+	</div><!-- /f -->
+
+	<div id="c">
+		<div class="container">
+			<p>Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a></p>
+
+		</div>
+	</div>
+
+
+
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="assets/js/classie.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
+
+    </body>
+</html>
